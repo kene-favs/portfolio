@@ -22,41 +22,7 @@ body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;overf
 ::-webkit-scrollbar-thumb{background:var(--purple);border-radius:3px;}
 canvas#bg{position:fixed;inset:0;z-index:0;pointer-events:none;}
 
-/* ═══ PHOTO SETUP OVERLAY ═══ */
-#photo-setup{
-  position:fixed;inset:0;z-index:999;
-  background:rgba(4,4,11,.96);backdrop-filter:blur(20px);
-  display:flex;align-items:center;justify-content:center;
-}
-.setup-box{
-  max-width:540px;width:90%;
-  background:var(--bg3);border:1px solid rgba(168,85,247,.4);
-  border-radius:28px;padding:48px 40px;text-align:center;
-}
-.setup-box h2{font-family:'Poppins',sans-serif;font-size:26px;font-weight:900;margin-bottom:8px;}
-.setup-box p{color:var(--muted);font-size:14px;line-height:1.7;margin-bottom:32px;}
-.photo-pickers{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-bottom:24px;}
-.picker-slot{
-  background:var(--bg4);border:2px dashed rgba(168,85,247,.3);border-radius:16px;
-  padding:20px 10px;cursor:pointer;transition:all .3s;
-  display:flex;flex-direction:column;align-items:center;gap:8px;
-}
-.picker-slot:hover{border-color:var(--purple);background:rgba(168,85,247,.08);}
-.picker-slot.done{border-color:var(--green);border-style:solid;background:rgba(34,197,94,.08);}
-.picker-slot .icon{font-size:28px;}
-.picker-slot .lbl{font-size:11px;color:var(--muted);font-weight:600;text-transform:uppercase;letter-spacing:1px;}
-.picker-slot .status{font-size:10px;color:var(--green);font-weight:700;display:none;}
-.picker-slot.done .status{display:block;}
-.picker-slot input{display:none;}
-.setup-btn{
-  background:linear-gradient(135deg,var(--purple),#7c3aed);
-  color:#fff;border:none;padding:14px 40px;border-radius:12px;
-  font-weight:700;font-size:15px;cursor:pointer;width:100%;
-  transition:all .25s;opacity:.4;pointer-events:none;
-}
-.setup-btn.ready{opacity:1;pointer-events:all;}
-.setup-btn.ready:hover{transform:translateY(-2px);box-shadow:0 12px 40px rgba(168,85,247,.4);}
-.skip-link{display:block;margin-top:14px;color:var(--muted);font-size:13px;cursor:pointer;text-decoration:underline;}
+/* photos loaded directly from repo */
 
 /* ═══ NAV ═══ */
 nav{
@@ -351,37 +317,6 @@ footer{background:var(--bg);border-top:1px solid var(--border);padding:28px 80px
 
 <canvas id="bg"></canvas>
 
-<!-- PHOTO SETUP -->
-<div id="photo-setup">
-  <div class="setup-box">
-    <div style="font-size:48px;margin-bottom:16px;">📸</div>
-    <h2>Add Your Photos</h2>
-    <p>Select your 3 photos once — they'll be saved automatically. You'll never need to do this again. The portfolio works perfectly without them too.</p>
-    <div class="photo-pickers">
-      <div class="picker-slot" id="sl1" onclick="document.getElementById('pi1').click()">
-        <span class="icon">🤵</span>
-        <span class="lbl">Headshot</span>
-        <span class="status">✓ Done</span>
-        <input type="file" id="pi1" accept="image/*" onchange="photoSelected(1,this)">
-      </div>
-      <div class="picker-slot" id="sl2" onclick="document.getElementById('pi2').click()">
-        <span class="icon">🏢</span>
-        <span class="lbl">Lobby Photo</span>
-        <span class="status">✓ Done</span>
-        <input type="file" id="pi2" accept="image/*" onchange="photoSelected(2,this)">
-      </div>
-      <div class="picker-slot" id="sl3" onclick="document.getElementById('pi3').click()">
-        <span class="icon">📈</span>
-        <span class="lbl">Office Photo</span>
-        <span class="status">✓ Done</span>
-        <input type="file" id="pi3" accept="image/*" onchange="photoSelected(3,this)">
-      </div>
-    </div>
-    <button class="setup-btn" id="setup-save" onclick="savePhotos()">Save & Launch Portfolio →</button>
-    <span class="skip-link" onclick="skipSetup()">Skip for now (use placeholder)</span>
-  </div>
-</div>
-
 <!-- NAV -->
 <nav>
   <div class="nav-brand">F<span>.</span>Okeke</div>
@@ -428,9 +363,9 @@ footer{background:var(--bg);border-top:1px solid var(--border);padding:28px 80px
   </div>
   <div class="hero-right r d2">
     <div class="glow-orb"></div>
-    <div class="ph ph1"><img src="" class="hero-img1" alt="Favour Okeke"></div>
-    <div class="ph ph2"><img src="" class="hero-img2" alt="Favour Okeke"></div>
-    <div class="ph ph3"><img src="" class="hero-img3" alt="Favour Okeke"></div>
+    <div class="ph ph1"><img src="photo1.jpg" alt="Favour Okeke"></div>
+    <div class="ph ph2"><img src="photo2.jpg" alt="Favour Okeke"></div>
+    <div class="ph ph3"><img src="photo3.jpg" alt="Favour Okeke"></div>
   </div>
 </section>
 
@@ -438,7 +373,7 @@ footer{background:var(--bg);border-top:1px solid var(--border);padding:28px 80px
 <section class="about" id="about">
   <div class="about-inner">
     <div class="about-img r">
-      <div class="about-img-wrap"><img src="" class="about-main-img" alt="Favour Okeke"></div>
+      <div class="about-img-wrap"><img src="photo2.jpg" alt="Favour Okeke"></div>
       <div class="about-badge"><span class="big">🚀</span>Builder &<br>Problem Solver</div>
     </div>
     <div class="about-bio r d2">
@@ -483,7 +418,7 @@ footer{background:var(--bg);border-top:1px solid var(--border);padding:28px 80px
     <!-- Autocycle AI -->
     <div class="card c-gold">
       <div class="card-stripe"></div>
-      <div class="wm"><img src="" class="wm-photo" alt="© F.Okeke"></div>
+      <div class="wm"><img src="photo1.jpg" alt="© F.Okeke"></div>
       <div class="wm-txt">© Favour Okeke</div>
       <div class="card-body">
         <div class="card-ico">🤖</div>
@@ -499,7 +434,7 @@ footer{background:var(--bg);border-top:1px solid var(--border);padding:28px 80px
     <!-- AfriLocal -->
     <div class="card c-teal">
       <div class="card-stripe"></div>
-      <div class="wm"><img src="" class="wm-photo" alt="© F.Okeke"></div>
+      <div class="wm"><img src="photo1.jpg" alt="© F.Okeke"></div>
       <div class="wm-txt">© Favour Okeke</div>
       <div class="card-body">
         <div class="card-ico">🌍</div>
@@ -515,7 +450,7 @@ footer{background:var(--bg);border-top:1px solid var(--border);padding:28px 80px
     <!-- Crypto Intelligence Machine -->
     <div class="card c-purple">
       <div class="card-stripe"></div>
-      <div class="wm"><img src="" class="wm-photo" alt="© F.Okeke"></div>
+      <div class="wm"><img src="photo1.jpg" alt="© F.Okeke"></div>
       <div class="wm-txt">© Favour Okeke</div>
       <div class="card-body">
         <div class="card-ico">🧠</div>
@@ -536,7 +471,7 @@ footer{background:var(--bg);border-top:1px solid var(--border);padding:28px 80px
     <!-- Autocycle Gold -->
     <div class="card c-orange">
       <div class="card-stripe"></div>
-      <div class="wm"><img src="" class="wm-photo" alt="© F.Okeke"></div>
+      <div class="wm"><img src="photo1.jpg" alt="© F.Okeke"></div>
       <div class="wm-txt">© Favour Okeke</div>
       <div class="card-body">
         <div class="card-ico">🥇</div>
@@ -552,7 +487,7 @@ footer{background:var(--bg);border-top:1px solid var(--border);padding:28px 80px
     <!-- Deriv Bot -->
     <div class="card c-pink">
       <div class="card-stripe"></div>
-      <div class="wm"><img src="" class="wm-photo" alt="© F.Okeke"></div>
+      <div class="wm"><img src="photo1.jpg" alt="© F.Okeke"></div>
       <div class="wm-txt">© Favour Okeke</div>
       <div class="card-body">
         <div class="card-ico">📊</div>
@@ -568,7 +503,7 @@ footer{background:var(--bg);border-top:1px solid var(--border);padding:28px 80px
     <!-- Autocycle Bot -->
     <div class="card c-cyan">
       <div class="card-stripe"></div>
-      <div class="wm"><img src="" class="wm-photo" alt="© F.Okeke"></div>
+      <div class="wm"><img src="photo1.jpg" alt="© F.Okeke"></div>
       <div class="wm-txt">© Favour Okeke</div>
       <div class="card-body">
         <div class="card-ico">⚙️</div>
@@ -589,7 +524,7 @@ footer{background:var(--bg);border-top:1px solid var(--border);padding:28px 80px
     <!-- WhatsApp Automation -->
     <div class="card c-green">
       <div class="card-stripe"></div>
-      <div class="wm"><img src="" class="wm-photo" alt="© F.Okeke"></div>
+      <div class="wm"><img src="photo1.jpg" alt="© F.Okeke"></div>
       <div class="wm-txt">© Favour Okeke</div>
       <div class="card-body">
         <div class="card-ico">💬</div>
@@ -605,7 +540,7 @@ footer{background:var(--bg);border-top:1px solid var(--border);padding:28px 80px
     <!-- Job Application Automation -->
     <div class="card c-blue">
       <div class="card-stripe"></div>
-      <div class="wm"><img src="" class="wm-photo" alt="© F.Okeke"></div>
+      <div class="wm"><img src="photo1.jpg" alt="© F.Okeke"></div>
       <div class="wm-txt">© Favour Okeke</div>
       <div class="card-body">
         <div class="card-ico">📝</div>
@@ -621,7 +556,7 @@ footer{background:var(--bg);border-top:1px solid var(--border);padding:28px 80px
     <!-- PropTech Dashboard -->
     <div class="card c-pink">
       <div class="card-stripe"></div>
-      <div class="wm"><img src="" class="wm-photo" alt="© F.Okeke"></div>
+      <div class="wm"><img src="photo1.jpg" alt="© F.Okeke"></div>
       <div class="wm-txt">© Favour Okeke</div>
       <div class="card-body">
         <div class="card-ico">🏢</div>
@@ -642,7 +577,7 @@ footer{background:var(--bg);border-top:1px solid var(--border);padding:28px 80px
     <!-- Apex Wealth -->
     <div class="card c-green">
       <div class="card-stripe"></div>
-      <div class="wm"><img src="" class="wm-photo" alt="© F.Okeke"></div>
+      <div class="wm"><img src="photo1.jpg" alt="© F.Okeke"></div>
       <div class="wm-txt">© Favour Okeke</div>
       <div class="card-body">
         <div class="card-ico">💰</div>
@@ -658,7 +593,7 @@ footer{background:var(--bg);border-top:1px solid var(--border);padding:28px 80px
     <!-- Capital Edge -->
     <div class="card c-blue">
       <div class="card-stripe"></div>
-      <div class="wm"><img src="" class="wm-photo" alt="© F.Okeke"></div>
+      <div class="wm"><img src="photo1.jpg" alt="© F.Okeke"></div>
       <div class="wm-txt">© Favour Okeke</div>
       <div class="card-body">
         <div class="card-ico">📈</div>
@@ -674,7 +609,7 @@ footer{background:var(--bg);border-top:1px solid var(--border);padding:28px 80px
     <!-- Yanki -->
     <div class="card c-teal">
       <div class="card-stripe"></div>
-      <div class="wm"><img src="" class="wm-photo" alt="© F.Okeke"></div>
+      <div class="wm"><img src="photo1.jpg" alt="© F.Okeke"></div>
       <div class="wm-txt">© Favour Okeke</div>
       <div class="card-body">
         <div class="card-ico">🛒</div>
@@ -694,7 +629,7 @@ footer{background:var(--bg);border-top:1px solid var(--border);padding:28px 80px
     <!-- Bonga -->
     <div class="card c-gold">
       <div class="card-stripe"></div>
-      <div class="wm"><img src="" class="wm-photo" alt="© F.Okeke"></div>
+      <div class="wm"><img src="photo1.jpg" alt="© F.Okeke"></div>
       <div class="wm-txt">© Favour Okeke</div>
       <div class="card-body">
         <div class="card-ico">📦</div>
@@ -710,7 +645,7 @@ footer{background:var(--bg);border-top:1px solid var(--border);padding:28px 80px
     <!-- Globex Retail -->
     <div class="card c-orange">
       <div class="card-stripe"></div>
-      <div class="wm"><img src="" class="wm-photo" alt="© F.Okeke"></div>
+      <div class="wm"><img src="photo1.jpg" alt="© F.Okeke"></div>
       <div class="wm-txt">© Favour Okeke</div>
       <div class="card-body">
         <div class="card-ico">🏪</div>
@@ -726,7 +661,7 @@ footer{background:var(--bg);border-top:1px solid var(--border);padding:28px 80px
     <!-- Glasses.com -->
     <div class="card c-cyan">
       <div class="card-stripe"></div>
-      <div class="wm"><img src="" class="wm-photo" alt="© F.Okeke"></div>
+      <div class="wm"><img src="photo1.jpg" alt="© F.Okeke"></div>
       <div class="wm-txt">© Favour Okeke</div>
       <div class="card-body">
         <div class="card-ico">👓</div>
@@ -742,7 +677,7 @@ footer{background:var(--bg);border-top:1px solid var(--border);padding:28px 80px
     <!-- Frame & Lens -->
     <div class="card c-purple">
       <div class="card-stripe"></div>
-      <div class="wm"><img src="" class="wm-photo" alt="© F.Okeke"></div>
+      <div class="wm"><img src="photo1.jpg" alt="© F.Okeke"></div>
       <div class="wm-txt">© Favour Okeke</div>
       <div class="card-body">
         <div class="card-ico">🔬</div>
@@ -779,7 +714,7 @@ footer{background:var(--bg);border-top:1px solid var(--border);padding:28px 80px
     <a href="https://www.linkedin.com/in/favour-okekee" target="_blank" class="cc r d2"><span style="font-size:22px">💼</span><div><div class="cc-lbl">LinkedIn</div><div class="cc-val">favour-okekee</div></div></a>
     <a href="https://github.com/kene-favs" target="_blank" class="cc r d3"><span style="font-size:22px">⚡</span><div><div class="cc-lbl">GitHub</div><div class="cc-val">kene-favs</div></div></a>
   </div>
-  <div class="contact-photo r"><img src="" class="contact-img" alt="Favour Okeke"></div>
+  <div class="contact-photo r"><img src="photo3.jpg" alt="Favour Okeke"></div>
 </section>
 
 <footer>
@@ -810,53 +745,7 @@ footer{background:var(--bg);border-top:1px solid var(--border);padding:28px 80px
   draw();
 })();
 
-/* ═══ PHOTO SETUP SYSTEM ═══ */
-const PHOTO_KEYS=['fo_photo1','fo_photo2','fo_photo3'];
-let photoData=[null,null,null];
-
-function applyPhotos(){
-  const p=PHOTO_KEYS.map(k=>localStorage.getItem(k));
-  const fallback='https://avatars.githubusercontent.com/u/248168818?v=4';
-  // hero collage
-  document.querySelectorAll('.hero-img1').forEach(el=>el.src=p[0]||fallback);
-  document.querySelectorAll('.hero-img2').forEach(el=>el.src=p[1]||fallback);
-  document.querySelectorAll('.hero-img3').forEach(el=>el.src=p[2]||fallback);
-  // about main
-  document.querySelectorAll('.about-main-img').forEach(el=>el.src=p[1]||fallback);
-  // contact
-  document.querySelectorAll('.contact-img').forEach(el=>el.src=p[2]||fallback);
-  // watermarks (use headshot)
-  document.querySelectorAll('.wm-photo').forEach(el=>el.src=p[0]||fallback);
-}
-
-function photoSelected(idx, input){
-  if(!input.files||!input.files[0])return;
-  const reader=new FileReader();
-  reader.onload=e=>{
-    photoData[idx-1]=e.target.result;
-    document.getElementById('sl'+idx).classList.add('done');
-    if(photoData.every(p=>p!==null))document.getElementById('setup-save').classList.add('ready');
-  };
-  reader.readAsDataURL(input.files[0]);
-}
-
-function savePhotos(){
-  photoData.forEach((d,i)=>{if(d)localStorage.setItem(PHOTO_KEYS[i],d);});
-  document.getElementById('photo-setup').style.display='none';
-  applyPhotos();
-}
-
-function skipSetup(){
-  document.getElementById('photo-setup').style.display='none';
-  applyPhotos();
-}
-
-// On load: check if photos already saved
-window.addEventListener('load',()=>{
-  const allSaved=PHOTO_KEYS.every(k=>localStorage.getItem(k));
-  if(allSaved){document.getElementById('photo-setup').style.display='none';}
-  applyPhotos();
-});
+// Photos served directly from repo as photo1.jpg, photo2.jpg, photo3.jpg
 
 /* ═══ SCROLL REVEAL ═══ */
 const obs=new IntersectionObserver(entries=>{
